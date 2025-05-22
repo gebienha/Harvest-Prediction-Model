@@ -7,7 +7,9 @@
 	<title>ML Crop Harvest Prediction</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="static/images/icons/croplogo.ico"/>
 <!--===============================================================================================-->
@@ -33,134 +35,424 @@
 	<link rel="stylesheet" type="text/css" href="static/css/main.css">
 <!--===============================================================================================-->
 
-<style>
-.contact100-form-title {
-  font-family:'Caveat', cursive;
-  background-color: lightgrey;
-  color: white;
-  
-}
-
-a:link {
-  color: magenta;
-}
-
-a:visited {
-  color: blue;
-}
-
-a:hover {
-  color: blue;
-}
-
-a:active {
-  color: blue;
-}
-
-input::-webkit-input-placeholder {
-    font-size: 16px;
-}
-
-</style>
+<!-- <style>
+        body {
+			font-family: 'Poppins', sans-serif;
+            background-image: url('static/images/bg-001.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .form-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2e7d32;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #2e7d32;
+        }
+        .btn-primary {
+            background-color: #2e7d32;
+            border-color: #2e7d32;
+        }
+        .btn-primary:hover {
+            background-color: #1b5e20;
+            border-color: #1b5e20;
+        }
+    </style>
 </head>
 <body>
 
-	<div class="bg-container-contact100" style="background-image: url(static/images/bg-001.jpg);">
-		<div class="contact100-header flex-sb-m">
-		</div> 	
-	</div>
+	<div class="form-container">
+        <div class="form-title">Bayer Interview - Predict Crop Harvest</div>
+        <form action="{{ url_for('predict') }}" method="post">
+            <div class="mb-3">
+                <label for="Estimated_Insects_Count" class="form-label">Estimated Insects Count</label>
+                <input type="number" step="any" class="form-control" name="Estimated Insects Count" id="Estimated_Insects_Count" required>
+            </div>
+            <div class="mb-3">
+                <label for="Crop_Type" class="form-label">Crop Type</label>
+                <input type="number" step="any" class="form-control" name="Crop Type" id="Crop_Type" required>
+            </div>
+            <div class="mb-3">
+                <label for="Soil_Type" class="form-label">Soil Type</label>
+                <input type="number" step="any" class="form-control" name="Soil_Type" id="Soil_Type" required>
+            </div>
+            <div class="mb-3">
+                <label for="Pesticide_Use_Category" class="form-label">Pesticide Use Category</label>
+                <input type="number" step="any" class="form-control" name="Pesticide Use Category" id="Pesticide_Use_Category" required>
+            </div>
+            <div class="mb-3">
+                <label for="Number_Doses_Week" class="form-label">Number Doses Week</label>
+                <input type="number" step="any" class="form-control" name="Number Doses Week" id="Number_Doses_Week" required>
+            </div>
+            <div class="mb-3">
+                <label for="Number_Weeks_Used" class="form-label">Number Weeks Used</label>
+                <input type="number" step="any" class="form-control" name="Number Weeks Used" id="Number_Weeks_Used" required>
+            </div>
+            <div class="mb-3">
+                <label for="Number_Weeks_Quit" class="form-label">Number Weeks Quit</label>
+                <input type="number" step="any" class="form-control" name="Number Weeks Quit" id="Number_Weeks_Quit" required>
+            </div>
+            <div class="mb-3">
+                <label for="Season" class="form-label">Season</label>
+                <input type="number" step="any" class="form-control" name="Season" id="Season" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-4">Predict</button>
+            </div>
+        </form>
+    </div> -->
+<style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
 
-	<div class="container-contact100">
-		<div class="wrap-contact100">
+        #contact-1750 {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+			background-image: url('static/images/bg-001.jpg');
+        }
 
+        /* Left side: form */
+        .cs-form-group {
+            flex: 0 0 45%;
+            background: white;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
 
-			<div class="contact100-form-title" style="background-image: url(static/images/bg-001.jpg);">
-				<span align="center">Bayer Interview - Predict Crop Harvest</span><br>
-			</div>
+        .cs-content .cs-topper {
+            font-weight: 600;
+            color: #2e7d32;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
 
-			<form action="{{ url_for('predict')}}" method="post" class="contact100-form validate-form">
-				
-				<!--1-->
-				<div class="wrap-input100 validate-input">
-					<input id="Estimated_Insects_Count" class="input100" type="number" step="any"  name="Estimated Insects Count" title="Estimated Insects Count" required="required" placeholder="Estimated Insects Count per square meter"/>
-					<span class="focus-input100"></span>
-					<label class="label-input100 rs1" for="message">
-						<span class="lnr lnr-bubble"></span>
-					</label>
-				</div>
-				
-				<!--2-->
-				<div class="wrap-input100 validate-input">
-					<input id="Crop_Type" class="input100" type="number" min="0" step="any" name="Crop Type" title="Crop_Type" required="required" placeholder="Crop Type"/>
-					<span class="focus-input100"></span>
-					<label class="label-input100 rs1" for="message">
-						<span class="lnr lnr-bubble"></span>
-					</label>
-				</div>
-				
-				<!--3-->
-				<div class="wrap-input100 validate-input">
-					<input id="Soil_Type" class="input100" type="number" step="any" min="0" title="Soil Type" required="required" name="Soil_Type" placeholder="Soil Type"/>
-					<span class="focus-input100"></span>
-					<label class="label-input100 rs1" for="message">
-						<span class="lnr lnr-bubble"></span>
-					</label>
-				</div>
-				
-				<!--4-->
-				<div class="wrap-input100 validate-input">
-					<input id="Pesticide_Use_Category" class="input100" step="any" type="number" min="0" name="Pesticide Use Category" title="Pesticide Use Category" required="required" placeholder="Pesticide Use Category"/>
-					<span class="focus-input100"></span>
-					<label class="label-input100 rs1" for="message">
-						<span class="lnr lnr-bubble"></span>
-					</label>
-				</div>
-				
-				<!--5-->
-				<div class="wrap-input100 validate-input">
-					<input id="Number_Doses_Week" class="input100" type="number" min="0" step="any" name="Number Doses Week" title="Number Doses Week" required="required" placeholder="Number Doses Week"/>
-					<span class="focus-input100"></span>
-					<label class="label-input100 rs1" for="message">
-						<span class="lnr lnr-bubble"></span>
-					</label>
-				</div>
-				
-				
-				<!--6-->
-				<div class="wrap-input100 validate-input">
-					<input id="Number_Weeks_Used" class="input100" type="number" min="0" step="any" name="Number Weeks Used" title="Number Weeks Used" required="required" placeholder="Number Weeks Used"/>
-					<span class="focus-input100"></span>
-					<label class="label-input100 rs1" for="message">
-						<span class="lnr lnr-bubble"></span>
-					</label>
-				</div>
-				
-				<!--7-->
-				<div class="wrap-input100 validate-input">	
-					<input id="Number_Weeks_Quit" class="input100" type="number" min="0" step="any" title="Number Weeks Quit" required="required" name="Number Weeks Quit" placeholder="Number Weeks Quit"/>
-					<span class="focus-input100"></span>
-					<label class="label-input100 rs1" for="message">
-						<span class="lnr lnr-bubble"></span>
-					</label>
-				</div>
+        .cs-content .cs-title {
+            font-weight: 700;
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        /* Form inputs */
+        .cs-label {
+            display: block;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .cs-input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .cs-input:focus,
+        .cs-input:focus-visible {
+            outline: none;
+            border-color: #2e7d32;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        /* Submit button */
+        .cs-button-solid {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cs-button-solid:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Right side: image/map */
+        .cs-picture-group {
+            flex: 1;
+            position: relative;
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cs-picture-group img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Info overlay on the right side */
+        .cs-info-overlay {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            z-index: 3;
+        }
+
+        .cs-info-overlay .cs-topper {
+            font-weight: 600;
+            color: #2e7d32;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .cs-info-overlay h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .cs-info-overlay p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .cs-info-overlay .cs-detail {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 991px) {
+            #contact-1750 {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .cs-form-group {
+                flex: none;
+                padding: 30px 20px;
+            }
+
+            .cs-picture-group {
+                flex: none;
+                height: 400px;
+            }
+
+            .cs-info-overlay {
+                position: static;
+                margin: 20px;
+                max-width: none;
+            }
+
+            .cs-content .cs-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .cs-form-group {
+                padding: 20px 15px;
+            }
+
+            .cs-content .cs-title {
+                font-size: 24px;
+            }
+
 			
-				<!--8-->
-				<div class="wrap-input100 validate-input">
-					<input id="Season" class="input100" type="number" min="0" step="any"  name="Season" title="Season" required="required" placeholder="Season"/>
-					<span class="focus-input100"></span>
-					<label class="label-input100 rs1" for="message">
-						<span class="lnr lnr-bubble"></span>
-					</label>
-				</div>	
+        }
+		/* Styles for the parameter guide section */
+.cs-info-overlay {
+    background: rgba(255, 255, 255, 0.96);
+    padding: 32px;
+    border-radius: 16px;
+    margin: 32px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    border: 1px solid #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+}
 
-				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
-						Predict
-					</button>
+.cs-info-overlay h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.cs-info-overlay p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 24px;
+}
+
+.parameter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.parameter-item {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.parameter-item strong {
+    font-weight: 600;
+    display: inline;
+    margin-right: 6px;
+}
+
+@media only screen and (max-width: 768px) {
+    .cs-info-overlay {
+        padding: 20px;
+        margin: 24px 0;
+    }
+
+    .cs-info-overlay h3 {
+        font-size: 18px;
+    }
+
+    .cs-info-overlay p {
+        font-size: 13px;
+    }
+
+    .parameter-item {
+        font-size: 13px;
+    }
+}
+
+    </style>
+
+</head>
+
+
+<body>
+    <section id="contact-1750" >
+		
+        <!-- Form left -->
+        <div class="cs-form-group">
+            <div class="cs-content">
+                <span class="cs-topper">Get Prediction</span>
+                <h2 class="cs-title">Predict Crop Harvest</h2>
+            </div>
+
+            <form action="{{ url_for('predict') }}" method="post" class="cs-form" id="cs-form-1750" name="Crop Prediction Form">
+                <label class="cs-label">
+                    Estimated Insects Count *
+                    <input class="cs-input" type="number" step="any" name="Estimated Insects Count" id="Estimated_Insects_Count" required />
+                </label>
+
+                <label class="cs-label">
+                    Crop Type *
+                    <input class="cs-input" type="number" step="any" name="Crop Type" id="Crop_Type" required />
+                </label>
+
+                <label class="cs-label">
+                    Soil Type *
+                    <input class="cs-input" type="number" step="any" name="Soil_Type" id="Soil_Type" required />
+                </label>
+
+                <label class="cs-label">
+                    Pesticide Use Category *
+                    <input class="cs-input" type="number" step="any" name="Pesticide Use Category" id="Pesticide_Use_Category" required />
+                </label>
+
+                <label class="cs-label">
+                    Number Doses Week *
+                    <input class="cs-input" type="number" step="any" name="Number Doses Week" id="Number_Doses_Week" required />
+                </label>
+
+                <label class="cs-label">
+                    Number Weeks Used *
+                    <input class="cs-input" type="number" step="any" name="Number Weeks Used" id="Number_Weeks_Used" required />
+                </label>
+
+                <label class="cs-label">
+                    Number Weeks Quit *
+                    <input class="cs-input" type="number" step="any" name="Number Weeks Quit" id="Number_Weeks_Quit" required />
+                </label>
+
+                <label class="cs-label">
+                    Season *
+                    <input class="cs-input" type="number" step="any" name="Season" id="Season" required />
+                </label>
+
+                <button class="cs-button-solid cs-submit" type="submit">Send Prediction</button>
+            </form>
+        </div>
+
+        <!-- Right side image with info overlay -->
+		 <div class="cs-picture-group">
+        	<img src="static/images/bg-002.jpg" alt="Background Image" />
+				<div class="cs-info-overlay" style="flex: 1 1 300px; max-width: 450px;">
+				<span class="cs-topper">Input Parameter Guide</span>
+				<h3>Required Fields Explanation</h3>
+				
+				<div class="parameter-list">
+					<div class="parameter-item"><strong>Estimated Insects Count:</strong> Number of insects per square meter.</div>
+					<div class="parameter-item"><strong>Crop Type:</strong> Crop category (0 or 1).</div>
+					<div class="parameter-item"><strong>Soil Type:</strong> Soil category (0 or 1).</div>
+					<div class="parameter-item"><strong>Pesticide Use Category:</strong> 1=Never, 2=Past, 3=Current.</div>
+					<div class="parameter-item"><strong>Number of Doses per Week:</strong> Weekly pesticide applications.</div>
+					<div class="parameter-item"><strong>Number of Weeks Used:</strong> Total weeks of pesticide use.</div>
+					<div class="parameter-item"><strong>Number of Weeks Quit:</strong> Weeks since stopping pesticide use.</div>
+					<div class="parameter-item"><strong>Season:</strong> Season index (1, 2, or 3).</div>
 				</div>
-			</form>
-		</div>
-	</div>
+			</div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
