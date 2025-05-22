@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+	<title>ML Crop Harvest Prediction</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="static/images/icons/croplogo.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="static/css/main.css">
+<!--===============================================================================================-->
+
+<style>
+.contact100-form-title {
+  font-family:'Caveat', cursive;
+  background-color: lightgrey;
+  color: white;
+  
+}
+
+a:link {
+  color: magenta;
+}
+
+a:visited {
+  color: blue;
+}
+
+a:hover {
+  color: blue;
+}
+
+a:active {
+  color: blue;
+}
+
+input::-webkit-input-placeholder {
+    font-size: 16px;
+}
+
+</style>
+</head>
+<body>
+
+	<div class="bg-container-contact100" style="background-image: url(static/images/bg-001.jpg);">
+		<div class="contact100-header flex-sb-m">
+		</div> 	
+	</div>
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+
+
+			<div class="contact100-form-title" style="background-image: url(static/images/bg-001.jpg);">
+				<span align="center">Bayer Interview - Predict Crop Harvest</span><br>
+			</div>
+
+			<form action="{{ url_for('predict')}}" method="post" class="contact100-form validate-form">
+				
+				<!--1-->
+				<div class="wrap-input100 validate-input">
+					<input id="Estimated_Insects_Count" class="input100" type="number" step="any"  name="Estimated Insects Count" title="Estimated Insects Count" required="required" placeholder="Estimated Insects Count per square meter"/>
+					<span class="focus-input100"></span>
+					<label class="label-input100 rs1" for="message">
+						<span class="lnr lnr-bubble"></span>
+					</label>
+				</div>
+				
+				<!--2-->
+				<div class="wrap-input100 validate-input">
+					<input id="Crop_Type" class="input100" type="number" min="0" step="any" name="Crop Type" title="Crop_Type" required="required" placeholder="Crop Type"/>
+					<span class="focus-input100"></span>
+					<label class="label-input100 rs1" for="message">
+						<span class="lnr lnr-bubble"></span>
+					</label>
+				</div>
+				
+				<!--3-->
+				<div class="wrap-input100 validate-input">
+					<input id="Soil_Type" class="input100" type="number" step="any" min="0" title="Soil Type" required="required" name="Soil_Type" placeholder="Soil Type"/>
+					<span class="focus-input100"></span>
+					<label class="label-input100 rs1" for="message">
+						<span class="lnr lnr-bubble"></span>
+					</label>
+				</div>
+				
+				<!--4-->
+				<div class="wrap-input100 validate-input">
+					<input id="Pesticide_Use_Category" class="input100" step="any" type="number" min="0" name="Pesticide Use Category" title="Pesticide Use Category" required="required" placeholder="Pesticide Use Category"/>
+					<span class="focus-input100"></span>
+					<label class="label-input100 rs1" for="message">
+						<span class="lnr lnr-bubble"></span>
+					</label>
+				</div>
+				
+				<!--5-->
+				<div class="wrap-input100 validate-input">
+					<input id="Number_Doses_Week" class="input100" type="number" min="0" step="any" name="Number Doses Week" title="Number Doses Week" required="required" placeholder="Number Doses Week"/>
+					<span class="focus-input100"></span>
+					<label class="label-input100 rs1" for="message">
+						<span class="lnr lnr-bubble"></span>
+					</label>
+				</div>
+				
+				
+				<!--6-->
+				<div class="wrap-input100 validate-input">
+					<input id="Number_Weeks_Used" class="input100" type="number" min="0" step="any" name="Number Weeks Used" title="Number Weeks Used" required="required" placeholder="Number Weeks Used"/>
+					<span class="focus-input100"></span>
+					<label class="label-input100 rs1" for="message">
+						<span class="lnr lnr-bubble"></span>
+					</label>
+				</div>
+				
+				<!--7-->
+				<div class="wrap-input100 validate-input">	
+					<input id="Number_Weeks_Quit" class="input100" type="number" min="0" step="any" title="Number Weeks Quit" required="required" name="Number Weeks Quit" placeholder="Number Weeks Quit"/>
+					<span class="focus-input100"></span>
+					<label class="label-input100 rs1" for="message">
+						<span class="lnr lnr-bubble"></span>
+					</label>
+				</div>
+			
+				<!--8-->
+				<div class="wrap-input100 validate-input">
+					<input id="Season" class="input100" type="number" min="0" step="any"  name="Season" title="Season" required="required" placeholder="Season"/>
+					<span class="focus-input100"></span>
+					<label class="label-input100 rs1" for="message">
+						<span class="lnr lnr-bubble"></span>
+					</label>
+				</div>	
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+						Predict
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+</body>
+</html>
