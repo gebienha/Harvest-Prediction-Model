@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 import numpy as np
 from tensorflow.keras.models import load_model
+import webbrowser
 
 # Load ANN model
-model = load_model("Bayer_Crop_Science_Nov2021_DSInterview_ANN.h5")
+model = load_model("harvestcrop.h5")
 
 app = Flask(__name__)
 
@@ -36,3 +37,5 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+webbrowser.open("http://127.0.0.1:5000/")
