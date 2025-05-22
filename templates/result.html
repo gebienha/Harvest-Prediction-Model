@@ -9,6 +9,9 @@
 	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
 	
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="static/images/icons/croplogo.ico"/>
@@ -34,7 +37,7 @@
 	<link rel="stylesheet" type="text/css" href="static/css/util.css">
 	<link rel="stylesheet" type="text/css" href="static/css/main.css">
 <!--===============================================================================================-->
-<style>
+<!-- <style>
 .contact100-form-title {
   font-family:'Montserrat', sans-serif;
   background-color: lightgrey;
@@ -65,8 +68,257 @@ a:active {
 }
 
 </style>
+</head> -->
+
+<link rel="icon" type="image/png" href="static/images/icons/croplogo.ico"/>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        body, html {
+            font-family: 'Poppins', sans-serif !important;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        #hero-229 {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .cs-container {
+            width: 100%;
+            max-width: 1280px;
+            margin: auto;
+            padding: 0 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cs-flex-group {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .cs-topper {
+            font-size: 13px;
+            line-height: 1.5;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: #4caf50;
+            margin-bottom: 16px;
+            display: block;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .cs-title {
+            font-size: clamp(39px, 6.4vw, 61px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 0 24px 0;
+            color: #fff;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .cs-text {
+            font-size: 20px;
+            line-height: 1.5;
+            margin: 0 0 32px 0;
+            color: #fff;
+            opacity: 0.9;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .prediction-result {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 32px 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .prediction-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 24px;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .prediction-explanation {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .prediction-explanation p {
+            margin-bottom: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            border-left: 4px solid #4caf50;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .prediction-explanation p:nth-child(1) {
+            border-left-color: #4caf50;
+        }
+
+        .prediction-explanation p:nth-child(2) {
+            border-left-color: #ff9800;
+        }
+
+        .prediction-explanation p:nth-child(3) {
+            border-left-color: #f44336;
+        }
+
+        .prediction-explanation strong {
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 600;
+        }
+
+        .cs-button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .cs-button {
+            font-size: 16px;
+            line-height: 1.5;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            padding: 16px 32px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .cs-button-solid {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .cs-button-solid:hover {
+            background-color: #2e7d32;
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .cs-button-transparent {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .cs-button-transparent:hover {
+            background-color: #fff;
+            color: #2e7d32;
+            text-decoration: none;
+        }
+
+        .cs-img {
+            width: 17px;
+            height: 17px;
+        }
+
+        /* Background Image */
+        .cs-picture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .cs-picture::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .cs-picture img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Fallback background */
+        .cs-picture {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('/api/placeholder/1920/1080') center/cover no-repeat;
+        }
+
+        /* Mobile Styles */
+        @media only screen and (max-width: 768px) {
+            .cs-container {
+                padding: 0 20px;
+            }
+
+            .prediction-result {
+                padding: 24px;
+                margin: 24px 0;
+            }
+
+            .prediction-text {
+                font-size: 24px;
+            }
+
+            .prediction-explanation {
+                font-size: 16px;
+            }
+
+            .cs-button-group {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .cs-button {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .cs-text {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
-<body>
+
+<!-- <body>
 
 	<div class="bg-container-contact100" style="background-image: url(static/images/bg-001.jpg);">
 		<div class="contact100-header flex-sb-m">
@@ -95,7 +347,50 @@ a:active {
 
 			</form>
 		</div>
-	</div>
+	</div> -->
+
+	<body>
+        <section id="hero-229">
+        <div class="cs-container">
+            <div class="cs-flex-group">
+                <span class="cs-topper">AI Crop Analysis</span>
+                <h1 class="cs-title">Prediction Results</h1>
+                <p class="cs-text">
+                    Our advanced machine learning model has analyzed your crop data and generated predictions to help optimize your agricultural decisions.
+                </p>
+
+                <div class="prediction-result">
+                    <div class="prediction-text">
+                        {{ prediction_text }}
+                    </div>
+                    <div class="prediction-explanation">
+                        <p><strong>0 - Crop Alive:</strong> Your crops are healthy and thriving under current conditions</p>
+                        <p><strong>1 - Crop Damaged Due to Pesticides:</strong> Potential pesticide-related crop damage detected</p>
+                        <p><strong>2 - Crop Damaged Due to Other Reasons:</strong> Environmental or other factors may be affecting crop health</p>
+                    </div>
+                </div>
+
+
+                <div class="cs-button-group">
+                    <a href="/" class="cs-button-solid cs-button">New Prediction</a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Image with multiple fallbacks -->
+        <picture class="cs-picture">
+            <source media="(max-width: 600px)" srcset="{{ url_for('static', filename='images/bg-001.jpg') }}, /api/placeholder/600/800">
+            <source media="(min-width: 601px)" srcset="{{ url_for('static', filename='images/bg-001.jpg') }}, /api/placeholder/1920/1080">
+            <img loading="lazy" decoding="async" 
+                 src="{{ url_for('static', filename='images/bg-001.jpg') }}" 
+                 onerror="this.src='/api/placeholder/1920/1080'" 
+                 alt="agricultural landscape" 
+                 width="1920" 
+                 height="1080" 
+                 aria-hidden="true">
+        </picture>
+    </section>
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
