@@ -1,14 +1,23 @@
 from flask import Flask, render_template, request
 import numpy as np
-from tensorflow.keras.models import load_model
 import webbrowser
 import joblib
 import pandas as pd
 
-# Load ANN model, scaler, and columns
-model = load_model("harvestcrop.h5")
-scaler = joblib.load("scaler.save")
-model_columns = np.load("model_columns.npy", allow_pickle=True)
+# Load the model columns
+model_columns = np.load('model_columns.npy', allow_pickle=True)
+
+# Load the complete model with scaler
+saved_model = joblib.load('harvest_model_complete.joblib')
+model = saved_model['model']
+scaler = saved_model['scaler']
+
+# Make predictions on new data
+def predict_crop_damage(new_data):
+    # Preprocess new data using saved scaler
+    scaled_data = scaler.transform(new_data)
+    # Make prediction
+    return model.predict(scaled_data)
 
 app = Flask(__name__)
 
@@ -32,15 +41,14 @@ def predict():
     # Convert to DataFrame
     input_df = pd.DataFrame([features])
     # One-hot encode
-    input_df = pd.get_dummies(input_df)
+    input_df = pd.get_dummies(input_df, columns=["Season", "Pesticide Use Category", "Soil_Type", "Crop Type"])
     # Reindex to match training columns
     input_df = input_df.reindex(columns=model_columns, fill_value=0)
     # Scale
     input_scaled = scaler.transform(input_df)
-    # Predict
-    prediction = model.predict(input_scaled)
-    predicted_class = int(np.argmax(prediction, axis=1)[0])
-    pred_text = f"Harvest Prediction: Crop Damage Class {predicted_class}"
+    # Predict - XGBoost returns the class directly
+    prediction = model.predict(input_scaled)[0]
+    pred_text = f"Harvest Prediction: Crop Damage Class {prediction}"
     return render_template("result.html", prediction_text=pred_text)
 
 if __name__ == "__main__":
