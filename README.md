@@ -1,5 +1,5 @@
 # Crop Harvest Prediction 🌽
-A machine learning web-based application for predicting crop dagame levels. Our application uses a trained model to assess the likelihood damage and classify it into appropriate categories.
+A machine learning web-based application for predicting crop damage levels. Our application uses a trained model to assess the likelihood damage and classify it into appropriate categories.
 ## Features:
 1. Predicts crop damage using real-world data
 2. Uses XGBoost and Box-Cox transformation
