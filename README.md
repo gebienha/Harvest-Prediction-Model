@@ -32,7 +32,7 @@ python app.py
 The app will be open at `http://127.0.0.1:5000/`
 ## Credits
 This project is made for Professor Ting's Introduction to Artificial Intelligence class at National Tsing Hua University, Taiwan
-🙍‍♂️Members:
+#### 🙍‍♂️Members:
 1. 徐青霞 
 2. 林佑銘
 3. 黃少鋒
